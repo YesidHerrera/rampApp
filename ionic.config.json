@@ -1,0 +1,7 @@
+{
+  "name": "rampApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
