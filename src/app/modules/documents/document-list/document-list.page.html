@@ -1,0 +1,50 @@
+
+  <ion-list>
+    <ion-list-header>
+      <ion-searchbar show-clear-button="always" placeholder="Ingrese criterio de búsqueda" [debounce]="1000" (ionInput)="handleFilter($event)"></ion-searchbar>
+    </ion-list-header>
+    @for(date of documentDateGroups(); track date) {
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label>{{date}}</ion-label>
+          <ion-label slot="end">{{date}}</ion-label>
+        </ion-item-divider>
+        @for(document of documentListFiltered(); track document.documentNumber) {
+          @if(document.date == date) {
+            <ion-item-sliding>
+            <ion-item>
+              <ion-icon aria-hidden="true" name="receipt-outline" slot="start" color="{{ document.amount > 0 ? 'primary' : 'danger' }}"></ion-icon>
+              <ion-label>
+                <h2>{{document.documentType}}</h2>
+                <p>{{document.subject}} - {{document.amount | number }}</p>
+              </ion-label>
+            </ion-item>
+            <ion-item-options side="start">
+              <ion-item-option style="background-color: transparent;">
+                <ion-icon color="primary" aria-hidden="true" name="create-outline" slot="icon-only"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+            <ion-item-options side="end">
+              <ion-item-option  style="background-color: transparent;">
+                <ion-icon color="danger" aria-hidden="true" name="trash-outline" slot="icon-only"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+            </ion-item-sliding>
+          }
+        } @empty {
+          <ion-item>
+            <ion-label>
+              <h2>No hay documentos</h2>
+            </ion-label>
+          </ion-item>
+        }
+      </ion-item-group>
+    }
+  </ion-list>
+  
+  
+  <ion-fab style="padding-bottom: 10px; padding-right: 10px;" slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>

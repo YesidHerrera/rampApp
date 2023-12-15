@@ -1,3 +1,41 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <app-main-menu></app-main-menu>
+  <app-user-menu></app-user-menu>
+  <ion-header [translucent]="true" id="menu-content">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button menu="main-menu"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>RampApp</ion-title>
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+        </ion-button>
+        <ion-menu-button menu="user-menu">
+          <ion-button>
+            <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon
+          ></ion-button>
+        </ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-router-outlet></ion-router-outlet>
+  </ion-content>
+  <!--<ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="documents">
+        <ion-icon name="receipt-outline"></ion-icon>
+        Documents
+      </ion-tab-button>
+      <ion-tab-button tab="home">
+        <ion-icon name="home-outline"></ion-icon>
+        Home
+      </ion-tab-button>
+      <ion-tab-button tab="settings">
+        <ion-icon name="cog-outline"></ion-icon>
+        Settings
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>-->
 </ion-app>
